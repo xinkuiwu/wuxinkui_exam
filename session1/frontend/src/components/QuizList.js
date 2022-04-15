@@ -6,7 +6,7 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { Quiz1, Quiz2, Quiz3, Quiz4 } from "./quizzes";
+import { Quiz1, Quiz2, Quiz3, Quiz4, Quiz5 } from "./quizzes";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -86,15 +86,30 @@ const QuizList = () => {
           <Quiz3 />
         </AccordionDetails>
       </Accordion>
-      {/*<Accordion expanded={expanded === 'panel4'}*/}
-      {/*           onChange={handleChange('panel4')}>*/}
-      {/*  <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">*/}
-      {/*    <Typography>Quiz #4 - (Optional) Optimization (10 minutes) </Typography>*/}
-      {/*  </AccordionSummary>*/}
-      {/*  <AccordionDetails>*/}
-      {/*    <Quiz4/>*/}
-      {/*  </AccordionDetails>*/}
-      {/*</Accordion>*/}
+      <Accordion
+        expanded={expanded === "panel4"}
+        onChange={handleChange("panel4")}
+      >
+        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+          <Typography>
+            Quiz #4 - (Optional) Optimization (10 minutes){" "}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Quiz4 />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel5"}
+        onChange={handleChange("panel5")}
+      >
+        <AccordionSummary aria-controls="panel5d-content" id="panel5d-header">
+          <Typography>Quiz #5 - Wrap up! </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Quiz5 />
+        </AccordionDetails>
+      </Accordion>
     </Box>
   );
 };

@@ -62,7 +62,6 @@ const Quiz3CreatorsTable = () => {
       <Stack direction="row" spacing={1}>
         <TextField
           label="ID"
-          field="id"
           value={id}
           onChange={(event) =>
             handleChange({
@@ -73,7 +72,6 @@ const Quiz3CreatorsTable = () => {
         />
         <TextField
           label="Name"
-          field="name"
           value={name}
           onChange={(event) =>
             handleChange({
@@ -84,7 +82,6 @@ const Quiz3CreatorsTable = () => {
         />
         <TextField
           label="Phone"
-          field="phone"
           value={phone}
           onChange={(event) =>
             handleChange({
@@ -95,7 +92,6 @@ const Quiz3CreatorsTable = () => {
         />
         <TextField
           label="Email"
-          field="email"
           value={email}
           onChange={(event) =>
             handleChange({

@@ -9,6 +9,8 @@ const initialState = {
   error: false,
   quiz2Creators: creators,
   quiz3Creators: [],
+  queryQuiz4CreatorsBaselineResponse: null,
+  queryQuiz4CreatorsResponse: null,
 };
 
 const slice = createSlice({
@@ -42,6 +44,18 @@ const slice = createSlice({
     AddNewQuiz3CreatorsSuccess(state) {
       state.isLoading = false;
     },
+
+    // GET QUIZ4 CREATORS BASELINE
+    queryQuiz4CreatorsBaselineSuccess(state, action) {
+      state.isLoading = false;
+      state.queryQuiz4CreatorsBaselineResponse = action.payload;
+    },
+
+    // GET QUIZ4 CREATORS
+    queryQuiz4CreatorsSuccess(state, action) {
+      state.isLoading = false;
+      state.queryQuiz4CreatorsResponse = action.payload;
+    },
   },
 });
 
@@ -67,6 +81,29 @@ export const addNewQuiz3Creators = (newCreator) => {
     /* Your code goes here */
     await axios.post(`/api/v1/quiz/addNewQuiz3Creators`, { newCreator });
     dispatch(slice.actions.AddNewQuiz3CreatorsSuccess());
+  };
+};
+
+export const queryQuiz4CreatorsBaseline = (tag) => {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    const response = await axios.get(
+      `/api/v1/quiz/queryQuiz4CreatorsBaseline`,
+      {
+        params: { tag },
+      }
+    );
+    dispatch(slice.actions.queryQuiz4CreatorsBaselineSuccess(response.data));
+  };
+};
+
+export const queryQuiz4Creators = (tag) => {
+  return async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    const response = await axios.get(`/api/v1/quiz/queryQuiz4Creators`, {
+      params: { tag },
+    });
+    dispatch(slice.actions.queryQuiz4CreatorsSuccess(response.data));
   };
 };
 
