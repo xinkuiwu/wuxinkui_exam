@@ -79,7 +79,6 @@ export const addNewQuiz3Creators = (newCreator) => {
     dispatch(slice.actions.startLoading());
     /* Quiz #3 - 2. Send a POST request to the server */
     /* Your code goes here */
-    await axios.post(`/api/v1/quiz/addNewQuiz3Creators`, { newCreator });
     dispatch(slice.actions.AddNewQuiz3CreatorsSuccess());
   };
 };
