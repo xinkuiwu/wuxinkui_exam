@@ -38,7 +38,7 @@ router.route("/getQuiz3Creators").get((req, res) => {
 router.route("/addNewQuiz3Creators").post((req, res) => {
   const { body } = req;
   const { newCreator } = body || {};
-  /* Quiz #3 - 2. Send a POST request to the server */
+  /* Quiz #3 - 3. Handle the POST request sent from the client */
   /* Your code goes here */
   res.status(200).send("ok");
 });
