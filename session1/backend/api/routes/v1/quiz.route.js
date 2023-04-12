@@ -20,7 +20,7 @@ const TAGS = [
   "musician",
   "painter",
 ];
-const quiz4Influencers = [];
+const quiz4InfluencersBaseline = [];
 for (let i = 0; i < 10000000; i++) {
   const randomTagIndex = Math.floor(Math.random() * TAGS.length);
   const influencer = {
@@ -28,8 +28,11 @@ for (let i = 0; i < 10000000; i++) {
     name: `name-${i}`,
     tag: TAGS[randomTagIndex],
   };
-  quiz4Influencers.push(influencer);
+  quiz4InfluencersBaseline.push(influencer);
 }
+
+/* Use the data in `quiz4InfluencersBaseline` and create an optimized data structure for `quiz4Influencers` */
+const quiz4Influencers = null;
 
 router.route("/getQuiz3Creators").get((req, res) => {
   res.status(200).send(quiz3Creators);
@@ -49,7 +52,7 @@ router.route("/queryQuiz4CreatorsBaseline").get((req, res) => {
 
   const start = new Date().getTime();
 
-  const results = quiz4Influencers.filter(
+  const results = quiz4InfluencersBaseline.filter(
     (influencer) => influencer.tag === tag
   );
 
@@ -68,9 +71,7 @@ router.route("/queryQuiz4Creators").get((req, res) => {
   const start = new Date().getTime();
 
   /* Quiz #4 - Optimized the lookup */
-  const results = quiz4Influencers.filter(
-    (influencer) => influencer.tag === tag
-  );
+  const results = [];
 
   const elapsed = new Date().getTime() - start;
   res.status(200).send({
