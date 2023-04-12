@@ -1,4 +1,4 @@
-# onbrand-coding-sessions
+# openart-coding-sessions
 
 Install project dependencies:
 

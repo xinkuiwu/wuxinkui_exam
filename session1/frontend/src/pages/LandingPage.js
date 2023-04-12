@@ -18,11 +18,11 @@ const ContentStyle = styled(Box)(({ theme }) => ({
 
 export default function LandingPage() {
   return (
-    <RootStyle title="OnBrand Coding Session">
+    <RootStyle title="OpenArt Coding Session">
       <ContentStyle>
         <Box p={3}>
           <Typography variant="h4" fontWeight="bold">
-            OnBrand Coding Session #1
+            OpenArt Coding Session #1
           </Typography>
 
           <QuizList />
