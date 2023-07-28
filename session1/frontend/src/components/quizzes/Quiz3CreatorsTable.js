@@ -54,6 +54,8 @@ const Quiz3CreatorsTable = () => {
   const handleAddButtonPressed = () => {
     /* Quiz #3 - 1. Complete the `Add` feature */
     /* Your code goes here */
+    //     My answer: do request with pass newCreator data for update data of backend.
+    dispatch(addNewQuiz3Creators(newCreator));
   };
 
   const renderAddNewCreator = () => {
@@ -122,16 +124,18 @@ const Quiz3CreatorsTable = () => {
               <StyledTableCell>ID</StyledTableCell>
               <StyledTableCell>Name</StyledTableCell>
               <StyledTableCell>Phone</StyledTableCell>
+              <StyledTableCell>Email</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {quiz3Creators.map((row) => {
-              const { id, name, phone } = row || {};
+              const { id, name, phone, email } = row || {};
               return (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell>{id}</StyledTableCell>
                   <StyledTableCell>{name}</StyledTableCell>
                   <StyledTableCell>{phone}</StyledTableCell>
+                  <StyledTableCell>{email}</StyledTableCell>
                 </StyledTableRow>
               );
             })}

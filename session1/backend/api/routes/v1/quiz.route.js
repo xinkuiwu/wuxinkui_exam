@@ -32,7 +32,20 @@ for (let i = 0; i < 10000000; i++) {
 }
 
 /* Use the data in `quiz4InfluencersBaseline` and create an optimized data structure for `quiz4Influencers` */
-const quiz4Influencers = null;
+// My answer: 构造一个map,通过遍历每项数据，以数据项的tag作为map的key,其map的value维护一个数组，将tag相同的数据项放在一起。
+// 这也查询的时候相当于只查map的key，就可以拿到对应的数组结果了
+const quiz4Influencers = quiz4InfluencersBaseline.reduce(
+  (result, currentItem) => {
+    if (result[currentItem.tag]) {
+      result[currentItem.tag].push(currentItem);
+      return result;
+    } else {
+      result[currentItem.tag] = [currentItem];
+      return result;
+    }
+  },
+  {}
+);
 
 router.route("/getQuiz3Creators").get((req, res) => {
   res.status(200).send(quiz3Creators);
@@ -43,7 +56,8 @@ router.route("/addNewQuiz3Creators").post((req, res) => {
   const { newCreator } = body || {};
   /* Quiz #3 - 3. Handle the POST request sent from the client */
   /* Your code goes here */
-  res.status(200).send("ok");
+  // My answer: send back the newCreator data
+  res.status(200).send([newCreator]);
 });
 
 router.route("/queryQuiz4CreatorsBaseline").get((req, res) => {
@@ -64,14 +78,16 @@ router.route("/queryQuiz4CreatorsBaseline").get((req, res) => {
   });
 });
 
+/* Quiz #4 - (Optional) Optimization */
+/* Your code goes here */
+// My answer: pre-process the data `quiz4Influencers` beforehand
 router.route("/queryQuiz4Creators").get((req, res) => {
   const { query } = req;
   const { tag } = query || {};
-
   const start = new Date().getTime();
 
   /* Quiz #4 - Optimized the lookup */
-  const results = [];
+  const results = quiz4Influencers?.[tag] ?? [];
 
   const elapsed = new Date().getTime() - start;
   res.status(200).send({

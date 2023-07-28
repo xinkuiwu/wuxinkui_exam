@@ -20,7 +20,8 @@ app.use("/api/v1", Routes);
 
 app.get("/*", async (req, res) => {
   if (isRunningLocally) {
-    proxy.web(req, res, { target: "http://localhost:3001" });
+    // 将代理地址端口号和后端保持一直
+    proxy.web(req, res, { target: "http://localhost:8080" });
   } else {
     res.set("Content-Type", "text/html");
     res.set("Cache-Control", "private, no-cache, no-store, must-revalidate");

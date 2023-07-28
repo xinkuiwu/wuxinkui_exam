@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "../../redux/store";
 import { Button, Stack, TextField } from "@mui/material";
+import { addNewQuiz2Creator } from "../../redux/slices/marketplace";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -46,6 +47,8 @@ const Quiz2CreatorsTable = () => {
   const handleAddButtonPressed = () => {
     /* Quiz #2 - 2. Complete the `Add` feature */
     /* Your code goes here */
+    //   My answer: dispatch an action to update the states.
+    dispatch(addNewQuiz2Creator(newCreator));
   };
 
   const renderAddNewCreator = () => {
@@ -106,9 +109,9 @@ const Quiz2CreatorsTable = () => {
       </Stack>
     );
   };
-
   /* Quiz #2 - 1. Show `Email` column in the table */
   /* Modify the code below */
+  // My answer: add another similar TableRowItem and TableRowBodyItem
   return (
     <Stack direction="column" spacing={2}>
       <TableContainer component={Paper} sx={{ my: 2 }}>
@@ -118,16 +121,18 @@ const Quiz2CreatorsTable = () => {
               <StyledTableCell>ID</StyledTableCell>
               <StyledTableCell>Name</StyledTableCell>
               <StyledTableCell>Phone</StyledTableCell>
+              <StyledTableCell>Email</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {quiz2Creators.map((row) => {
-              const { id, name, phone } = row || {};
+            {quiz2Creators?.map((row) => {
+              const { id, name, phone, email } = row || {};
               return (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell>{id}</StyledTableCell>
                   <StyledTableCell>{name}</StyledTableCell>
                   <StyledTableCell>{phone}</StyledTableCell>
+                  <StyledTableCell>{email}</StyledTableCell>
                 </StyledTableRow>
               );
             })}
